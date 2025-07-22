@@ -15,7 +15,8 @@ class Perceptron:
         rng = np.random.default_rng(self.seed)
         ### START CODE HERE ###
         ### TODO: Initialize weights with small Gaussian noise using rng.normal
-        self.weights = rng.normal(loc=0.0, scale=0.01, size=(self.input_size + 1,)) 
+        scale = 1 / np.sqrt(self.input_size + 1)
+        self.weights = rng.normal(loc=0.0, scale=scale, size=(self.input_size + 1,)) 
 
         ### END CODE HERE ###
 
@@ -106,7 +107,8 @@ def plot_decision_boundary(model, X, y):
     plt.ylabel('$x_2$')
     plt.grid(True)
     plt.tight_layout()
-    plt.show()
+    plt.savefig('perceptron_decision_boundary.png')
+    print("Gráfico salvo como 'perceptron_decision_boundary.png'")
 
 def main():
 
