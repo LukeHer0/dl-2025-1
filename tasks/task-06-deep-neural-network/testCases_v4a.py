@@ -55,7 +55,7 @@ def L_model_forward_test_case():
     return X, parameters
 
 def compute_cost_test_case():
-    Y = np.asarray([[1, 1, 1]])
+    Y = np.asarray([[1, 1, 0]])
     aL = np.array([[.8,.9,0.4]])
     
     return Y, aL
@@ -67,10 +67,10 @@ def linear_backward_test_case():
        [-1.74314104, -0.59664964]]), np.array([[ 0.74505627,  1.97611078, -1.24412333]]), np.array([[1]]))
     """
     np.random.seed(1)
-    dZ = np.random.randn(1,2)
-    A = np.random.randn(3,2)
-    W = np.random.randn(1,3)
-    b = np.random.randn(1,1)
+    dZ = np.random.randn(3,4)
+    A = np.random.randn(5,4)
+    W = np.random.randn(3,5)
+    b = np.random.randn(3,1)
     linear_cache = (A, W, b)
     return dZ, linear_cache
 
@@ -95,6 +95,7 @@ def L_model_backward_test_case():
     X = np.random.rand(3,2)
     Y = np.array([[1, 1]])
     parameters = {'W1': np.array([[ 1.78862847,  0.43650985,  0.09649747]]), 'b1': np.array([[ 0.]])}
+
     aL, caches = (np.array([[ 0.60298372,  0.87182628]]), [((np.array([[ 0.20445225,  0.87811744],
            [ 0.02738759,  0.67046751],
            [ 0.4173048 ,  0.55868983]]),
@@ -209,3 +210,4 @@ def print_grads(grads):
     print ("dW1 = "+ str(grads["dW1"]))
     print ("db1 = "+ str(grads["db1"]))
     print ("dA1 = "+ str(grads["dA1"]))     
+    
